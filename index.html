@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmedinova — Premium Websites for Barbers & Salons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold:      #c9a84c;
+      --gold-lt:   #e8c875;
+      --gold-dk:   #a07c30;
+      --bg:        #0a0908;
+      --bg2:       #111009;
+      --card:      #161412;
+      --card-h:    #1e1b16;
+      --txt:       #ffffff;
+      --txt2:      #c0b89a;
+      --muted:     #6b635a;
+      --border:    rgba(201,168,76,.15);
+      --r:         12px;
+      --ff-d:      'Bebas Neue', cursive;
+      --ff-s:      'Playfair Display', serif;
+      --ff:        'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--txt); font-family: var(--ff); overflow-x: hidden; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dk); border-radius: 4px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 24px; display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10,9,8,.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { font-family: var(--ff-d); font-size: 22px; letter-spacing: 2px; color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: #000; padding: 10px 20px; border-radius: var(--r);
+      font-weight: 700; font-size: 13px; letter-spacing: 1px;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--gold-lt); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.12) 0%, transparent 65%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(201,168,76,.02) 40px, rgba(201,168,76,.02) 41px),
+                  repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201,168,76,.02) 40px, rgba(201,168,76,.02) 41px);
+    }
+    .hero-inner { position: relative; max-width: 780px; }
+    .hero-tag {
+      display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 3px;
+      color: var(--gold); text-transform: uppercase; padding: 6px 18px;
+      border: 1px solid var(--border); border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--ff-s); font-size: clamp(2.4rem, 7vw, 4.5rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 22px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--txt2);
+      max-width: 560px; margin: 0 auto 40px;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: #000; padding: 16px 32px; border-radius: var(--r);
+      font-weight: 700; font-size: 15px; letter-spacing: .5px;
+      transition: all .2s; display: flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-secondary {
+      border: 1px solid var(--border); color: var(--txt); padding: 16px 32px;
+      border-radius: var(--r); font-weight: 500; font-size: 15px;
+      transition: all .2s; display: flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── STATS ── */
+    .stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden; max-width: 600px; margin: 60px auto 0;
+    }
+    .stat { background: var(--card); padding: 28px 16px; text-align: center; }
+    .stat-num { font-family: var(--ff-d); font-size: 2.2rem; color: var(--gold); }
+    .stat-lbl { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 90px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .sec-tag {
+      display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 3px;
+      color: var(--gold); text-transform: uppercase; padding: 5px 16px;
+      border: 1px solid var(--border); border-radius: 100px; margin-bottom: 14px;
+    }
+    .sec-header { text-align: center; margin-bottom: 56px; }
+    .sec-title { font-family: var(--ff-s); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 14px; }
+    .sec-sub { color: var(--txt2); max-width: 540px; margin: 0 auto; }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { background: var(--bg2); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+    .portfolio-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+      overflow: hidden; transition: all .3s;
+    }
+    .portfolio-card:hover { border-color: var(--gold); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(201,168,76,.12); }
+    .portfolio-preview {
+      height: 220px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .portfolio-preview.ramex { background: linear-gradient(135deg, #0a0908 0%, #1a1408 50%, #0a0908 100%); }
+    .portfolio-preview.shaz  { background: linear-gradient(135deg, #080808 0%, #120f08 50%, #080808 100%); }
+    .portfolio-label {
+      font-family: var(--ff-d); font-size: 3rem; letter-spacing: 4px; color: var(--gold);
+      opacity: .9; text-align: center; padding: 20px;
+    }
+    .portfolio-tag {
+      position: absolute; top: 14px; right: 14px; background: rgba(201,168,76,.15);
+      border: 1px solid var(--border); color: var(--gold); font-size: 10px;
+      font-weight: 600; letter-spacing: 2px; padding: 4px 10px; border-radius: 100px;
+    }
+    .portfolio-info { padding: 24px; }
+    .portfolio-name { font-family: var(--ff-s); font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .portfolio-desc { color: var(--txt2); font-size: 14px; margin-bottom: 18px; line-height: 1.6; }
+    .portfolio-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .pf-chip {
+      font-size: 11px; font-weight: 600; letter-spacing: 1px; color: var(--gold);
+      background: rgba(201,168,76,.08); border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .portfolio-link {
+      display: inline-flex; align-items: center; gap: 6px; color: var(--gold);
+      font-size: 13px; font-weight: 600; letter-spacing: .5px; transition: gap .2s;
+    }
+    .portfolio-link:hover { gap: 10px; }
+
+    /* ── FEATURES ── */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .feature-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 32px 28px; transition: all .3s;
+    }
+    .feature-card:hover { border-color: var(--gold); background: var(--card-h); }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 16px; }
+    .feature-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+    .feature-desc { color: var(--txt2); font-size: 14px; line-height: 1.6; }
+
+    /* ── PRICING ── */
+    #pricing { background: var(--bg2); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 960px; margin: 0 auto; }
+    .pricing-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 36px 32px; position: relative; transition: all .3s;
+    }
+    .pricing-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .pricing-card.featured {
+      border-color: var(--gold); background: var(--card-h);
+      box-shadow: 0 0 60px rgba(201,168,76,.1);
+    }
+    .featured-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: #000; font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; padding: 5px 18px; border-radius: 100px; white-space: nowrap;
+    }
+    .pricing-tier { font-size: 11px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .pricing-name { font-family: var(--ff-s); font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
+    .pricing-desc { color: var(--txt2); font-size: 13px; margin-bottom: 24px; }
+    .pricing-price { margin-bottom: 28px; }
+    .price-num { font-family: var(--ff-d); font-size: 3rem; color: var(--gold); }
+    .price-note { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .pricing-list { list-style: none; margin-bottom: 32px; }
+    .pricing-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.04);
+      font-size: 14px; color: var(--txt2);
+    }
+    .pricing-list li i { color: var(--gold); margin-top: 3px; flex-shrink: 0; }
+    .pricing-list li.muted i { color: var(--muted); }
+    .pricing-list li.muted { opacity: .5; }
+    .btn-plan {
+      display: block; text-align: center; padding: 14px; border-radius: var(--r);
+      font-weight: 700; font-size: 14px; letter-spacing: .5px; transition: all .2s;
+      border: 1px solid var(--border); color: var(--txt);
+    }
+    .btn-plan:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-plan.gold { background: var(--gold); color: #000; border-color: var(--gold); }
+    .btn-plan.gold:hover { background: var(--gold-lt); }
+
+    /* ── PROCESS ── */
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; position: relative; }
+    .step { text-align: center; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%; background: rgba(201,168,76,.1);
+      border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-d); font-size: 1.4rem; color: var(--gold);
+      margin: 0 auto 20px;
+    }
+    .step-title { font-weight: 700; margin-bottom: 8px; }
+    .step-desc { color: var(--txt2); font-size: 14px; line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--bg2); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .testimonial {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 28px; transition: border-color .3s;
+    }
+    .testimonial:hover { border-color: var(--gold); }
+    .t-stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+    .t-text { color: var(--txt2); font-size: 14px; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(201,168,76,.15); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-d); font-size: 1.1rem; color: var(--gold); flex-shrink: 0;
+    }
+    .t-name { font-weight: 600; font-size: 14px; }
+    .t-role { color: var(--muted); font-size: 12px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center; padding: 100px 24px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,.08) 0%, transparent 70%);
+      border-top: 1px solid var(--border);
+    }
+    .cta-section h2 { font-family: var(--ff-s); font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; margin-bottom: 16px; }
+    .cta-section p { color: var(--txt2); max-width: 520px; margin: 0 auto 40px; font-size: 1.05rem; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .whatsapp-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25d366; color: #fff; padding: 18px 36px;
+      border-radius: var(--r); font-weight: 700; font-size: 15px;
+      transition: all .2s; box-shadow: 0 8px 30px rgba(37,211,102,.25);
+    }
+    .whatsapp-btn:hover { background: #20bd5a; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(37,211,102,.35); }
+    .email-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1px solid var(--border); color: var(--txt); padding: 18px 36px;
+      border-radius: var(--r); font-weight: 500; font-size: 15px; transition: all .2s;
+    }
+    .email-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 32px 24px;
+      border-top: 1px solid var(--border); color: var(--muted); font-size: 13px;
+    }
+    footer span { color: var(--gold); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      .stats { grid-template-columns: repeat(3, 1fr); }
+      .stat { padding: 20px 10px; }
+      .stat-num { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">AHMEDINOVA</div>
+  <!-- CUSTOMIZE: replace +447708485400 with your WhatsApp number -->
+  <a href="https://wa.me/447708485400?text=Hi%2C+I%27d+like+a+website+for+my+barbershop" class="nav-cta">
+    <i class="fab fa-whatsapp"></i> WhatsApp Me
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Ahmedinova · Bolton Web Design</div>
+    <h1>Premium Websites for<br><span>Barbers & Salons</span></h1>
+    <p>Your shop deserves a website that actually brings in customers — not just a basic page. I build high-end sites that look incredible on every device.</p>
+    <div class="hero-btns">
+      <!-- CUSTOMIZE: replace +447708485400 with your WhatsApp number -->
+      <a href="https://wa.me/447708485400?text=Hi%2C+I%27d+like+a+website+for+my+barbershop" class="btn-primary">
+        <i class="fab fa-whatsapp"></i> Get a Free Quote
+      </a>
+      <a href="#portfolio" class="btn-secondary">
+        <i class="fas fa-images"></i> See My Work
+      </a>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">2+</div>
+        <div class="stat-lbl">Sites Built</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5★</div>
+        <div class="stat-lbl">Satisfaction</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-lbl">Day Delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">My Work</div>
+      <h2 class="sec-title">Live Sites I've Built</h2>
+      <p class="sec-sub">Every site is custom-designed for the business — no templates, no shortcuts.</p>
+    </div>
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-preview ramex">
+          <div class="portfolio-label">RAMEX<br>BARBERS</div>
+          <div class="portfolio-tag">LIVE</div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-name">Ramex Barbers — Bolton</div>
+          <div class="portfolio-desc">Full barbershop site with online booking, video hero, service menu, team profiles, and an e-commerce shop section.</div>
+          <div class="portfolio-features">
+            <span class="pf-chip">Booking System</span>
+            <span class="pf-chip">Video Hero</span>
+            <span class="pf-chip">Shop</span>
+            <span class="pf-chip">SEO</span>
+          </div>
+          <a href="https://becareful69.github.io/ramex-barbers" target="_blank" class="portfolio-link">View Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal">
+        <div class="portfolio-preview shaz">
+          <div class="portfolio-label">SHAZ<br>CUTZ</div>
+          <div class="portfolio-tag">LIVE</div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-name">Shaz Cutz — Bolton</div>
+          <div class="portfolio-desc">Luxury dark-gold aesthetic site with animated sections, gallery, service pricing, and WhatsApp booking integration.</div>
+          <div class="portfolio-features">
+            <span class="pf-chip">Luxury Design</span>
+            <span class="pf-chip">Gallery</span>
+            <span class="pf-chip">Animations</span>
+            <span class="pf-chip">WhatsApp</span>
+          </div>
+          <a href="https://becareful69.github.io/shaz-cutz" target="_blank" class="portfolio-link">View Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">What You Get</div>
+      <h2 class="sec-title">Everything Your Shop Needs</h2>
+      <p class="sec-sub">Built from the ground up. No page builders, no bloated plugins — just clean, fast code.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Mobile-First Design</div>
+        <div class="feature-desc">Looks perfect on every phone, tablet, and desktop. Most of your customers browse on mobile.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📅</div>
+        <div class="feature-title">Online Booking</div>
+        <div class="feature-desc">Connect to Booksy, Fresha, or WhatsApp booking so customers can book 24/7 without calling.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Ultra Fast Loading</div>
+        <div class="feature-desc">Hand-coded sites load in under 2 seconds. Google rewards fast sites with higher rankings.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📍</div>
+        <div class="feature-title">Google Maps + SEO</div>
+        <div class="feature-desc">Show up when people search "barber near me" — I optimise every page for local search.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">✂️</div>
+        <div class="feature-title">Services & Pricing</div>
+        <div class="feature-desc">Full price list and service menu so customers know exactly what you offer before they walk in.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🖼️</div>
+        <div class="feature-title">Gallery & Before/After</div>
+        <div class="feature-desc">Showcase your best cuts with a premium photo gallery. Before & after sliders show your skill.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">Pricing</div>
+      <h2 class="sec-title">Simple, Fair Pricing</h2>
+      <p class="sec-sub">One-time payment. You own it forever. No monthly fees, no hidden costs.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="pricing-card reveal">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-name">Basic Site</div>
+        <div class="pricing-desc">Get online fast with a clean, professional presence.</div>
+        <div class="pricing-price">
+          <div class="price-num">£149</div>
+          <div class="price-note">One-time · Ready in 3–5 days</div>
+        </div>
+        <ul class="pricing-list">
+          <li><i class="fas fa-check fa-xs"></i> 4-page site (Home, Services, Gallery, Contact)</li>
+          <li><i class="fas fa-check fa-xs"></i> Mobile responsive design</li>
+          <li><i class="fas fa-check fa-xs"></i> Google Maps embedded</li>
+          <li><i class="fas fa-check fa-xs"></i> WhatsApp booking button</li>
+          <li><i class="fas fa-check fa-xs"></i> Basic SEO setup</li>
+          <li class="muted"><i class="fas fa-times fa-xs"></i> Animations & effects</li>
+          <li class="muted"><i class="fas fa-times fa-xs"></i> Before & after gallery</li>
+        </ul>
+        <!-- CUSTOMIZE: replace +447708485400 with your WhatsApp number -->
+        <a href="https://wa.me/447708485400?text=Hi%2C+I%27m+interested+in+the+Basic+Site+package" class="btn-plan">Get Started</a>
+      </div>
+
+      <div class="pricing-card featured reveal">
+        <div class="featured-badge">MOST POPULAR</div>
+        <div class="pricing-tier">Pro</div>
+        <div class="pricing-name">Premium Site</div>
+        <div class="pricing-desc">A full luxury site that makes your shop stand out.</div>
+        <div class="pricing-price">
+          <div class="price-num">£249</div>
+          <div class="price-note">One-time · Ready in 5–7 days</div>
+        </div>
+        <ul class="pricing-list">
+          <li><i class="fas fa-check fa-xs"></i> Everything in Basic</li>
+          <li><i class="fas fa-check fa-xs"></i> Smooth animations & effects</li>
+          <li><i class="fas fa-check fa-xs"></i> Video or photo hero section</li>
+          <li><i class="fas fa-check fa-xs"></i> Team profiles section</li>
+          <li><i class="fas fa-check fa-xs"></i> Before & after gallery</li>
+          <li><i class="fas fa-check fa-xs"></i> Full price list page</li>
+          <li><i class="fas fa-check fa-xs"></i> 14-day support after launch</li>
+        </ul>
+        <!-- CUSTOMIZE: replace +447708485400 with your WhatsApp number -->
+        <a href="https://wa.me/447708485400?text=Hi%2C+I%27m+interested+in+the+Premium+Site+package" class="btn-plan gold">Get Started</a>
+      </div>
+
+      <div class="pricing-card reveal">
+        <div class="pricing-tier">Elite</div>
+        <div class="pricing-name">Full Package</div>
+        <div class="pricing-desc">The complete setup — site, SEO, and Google presence.</div>
+        <div class="pricing-price">
+          <div class="price-num">£399</div>
+          <div class="price-note">One-time · Ready in 7–10 days</div>
+        </div>
+        <ul class="pricing-list">
+          <li><i class="fas fa-check fa-xs"></i> Everything in Pro</li>
+          <li><i class="fas fa-check fa-xs"></i> Advanced local SEO</li>
+          <li><i class="fas fa-check fa-xs"></i> Google Business setup</li>
+          <li><i class="fas fa-check fa-xs"></i> Online shop / product section</li>
+          <li><i class="fas fa-check fa-xs"></i> Custom domain setup</li>
+          <li><i class="fas fa-check fa-xs"></i> 30-day support after launch</li>
+          <li><i class="fas fa-check fa-xs"></i> Free 1 update/month for 3 months</li>
+        </ul>
+        <!-- CUSTOMIZE: replace +447708485400 with your WhatsApp number -->
+        <a href="https://wa.me/447708485400?text=Hi%2C+I%27m+interested+in+the+Full+Package" class="btn-plan">Get Started</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">How It Works</div>
+      <h2 class="sec-title">Simple 4-Step Process</h2>
+      <p class="sec-sub">No jargon, no complications. I handle everything — you just give me the details.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-title">Chat to Me</div>
+        <div class="step-desc">WhatsApp me with your shop name, what you need, and any photos you have.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-title">I Design It</div>
+        <div class="step-desc">I build your site in 3–7 days and send you a preview link to review.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-title">You Approve</div>
+        <div class="step-desc">You tell me any changes — I do unlimited tweaks until you're 100% happy.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div class="step-title">Go Live</div>
+        <div class="step-desc">I put the site live on your domain. Your shop is now online and taking bookings.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">Reviews</div>
+      <h2 class="sec-title">What Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-text">"Honestly couldn't believe the quality for the price. Our website looks better than barbershops that charge 10x our prices. Customers tell us all the time how good it looks."</div>
+        <div class="t-author">
+          <div class="t-avatar">R</div>
+          <div>
+            <div class="t-name">Ramex Barbers</div>
+            <div class="t-role">Bolton, Greater Manchester</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-text">"He built exactly what I imagined — dark, luxury, professional. Had it done in less than a week. Bookings have gone up since we put the WhatsApp button on."</div>
+        <div class="t-author">
+          <div class="t-avatar">S</div>
+          <div>
+            <div class="t-name">Shaz Cutz</div>
+            <div class="t-role">Bolton, Greater Manchester</div>
+          </div>
+        </div>
+      </div>
+      <!-- CUSTOMIZE: add more testimonials as you get them -->
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-tag">Get Started Today</div>
+      <h2>Ready to Get Your Shop Online?</h2>
+      <p>Drop me a WhatsApp message. I'll get back to you within the hour and we can get started straight away.</p>
+      <div class="cta-btns">
+        <!-- CUSTOMIZE: replace +447708485400 with your WhatsApp number -->
+        <a href="https://wa.me/447708485400?text=Hi%2C+I%27d+like+a+website+for+my+shop.+Can+you+help?" class="whatsapp-btn">
+          <i class="fab fa-whatsapp fa-lg"></i> WhatsApp Now
+        </a>
+        <!-- CUSTOMIZE: replace with your email -->
+        <a href="mailto:bakriadam076@gmail.com" class="email-btn">
+          <i class="fas fa-envelope"></i> Send an Email
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built by <span>AHMEDINOVA</span> · Bolton Web Design · <span>07708 485400</span></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
